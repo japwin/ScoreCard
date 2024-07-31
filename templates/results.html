@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    <h1>Results</h1>
+    <p>User: {{ username }}</p>
+    <p>{{ fighter1 }} Scores: {{ SCard1 }} - Total: {{ SCard1|sum }}</p>
+    <p>{{ fighter2 }} Scores: {{ SCard2 }} - Total: {{ SCard2|sum }}</p>
+    <h2>Winner: {{ winner }}</h2>
+    <h3>Pick Counts</h3>
+    <p>{{ fighter1 }}: {{ pick_counts['fighter1'] }} picks</p>
+    <p>{{ fighter2 }}: {{ pick_counts['fighter2'] }} picks</p>
+    <p>Draw: {{ pick_counts['draw'] }} picks</p>
+    <form action="/reset" method="get">
+        <button type="submit">Reset</button>
+    </form>
+</body>
+</html>

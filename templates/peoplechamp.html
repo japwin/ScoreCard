@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fight App</title>
+</head>
+<body>
+    <h1>Fight App</h1>
+    <div id="content"></div>
+
+    <script>
+        const API_BASE_URL = 'japwin.pythonanywhere.com';
+
+        function login(japwin) {
+            fetch(`${API_BASE_URL}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                startFight('Fighter 1', 'Fighter 2');
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function startFight(fighter1, fighter2) {
+            fetch(`${API_BASE_URL}/start_fight`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ fighter1, fighter2 }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                processRound(1, 10, 9);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function processRound(round_number, score1, score2) {
+            fetch(`${API_BASE_URL}/round`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ round_number, score1, score2 }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                getResults();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function getResults() {
+            fetch(`${API_BASE_URL}/results`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('content').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Initial call to login (you can replace 'testuser' with a real username)
+        login('testuser');
+    </script>
+</body>
+</html>

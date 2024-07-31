@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    <h1>Match Results</h1>
+    <p>{{ fighter1 }} Scores: {{ SCard1 }} - Total: {{ total1 }}</p>
+    <p>{{ fighter2 }} Scores: {{ SCard2 }} - Total: {{ total2 }}</p>
+    <h2>No Contest</h2>
+    <form action="/reset" method="get">
+        <button type="submit">Reset</button>
+    </form>
+</body>
+</html>

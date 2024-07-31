@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KO Winner</title>
+</head>
+<body>
+    <h1>KO Winner</h1>
+    <form action="/ko" method="post">
+        <label for="ko_winner">Who won by KO?</label>
+        <select id="ko_winner" name="ko_winner">
+            <option value="{{ fighter1 }}">{{ fighter1 }}</option>
+            <option value="{{ fighter2 }}">{{ fighter2 }}</option>
+        </select>
+        <button type="submit">Confirm</button>
+    </form>
+</body>
+</html>

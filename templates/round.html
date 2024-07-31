@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Round {{ round_number }}</title>
+</head>
+<body>
+    <h1>Round {{ round_number }}</h1>
+    <h2>{{ fighter1 }} vs {{ fighter2 }}</h2>
+    <form action="/round/{{ round_number }}" method="post">
+        <label for="score1">{{ fighter1 }}'s Score:</label>
+        <input type="number" id="score1" name="score1" min="7" max="10" required><br>
+        <label for="score2">{{ fighter2 }}'s Score:</label>
+        <input type="number" id="score2" name="score2" min="7" max="10" required><br>
+        <button type="submit">Continue</button>
+        <button type="submit" name="ko" value="ko">KO</button>
+        <button type="submit" name="no_contest" value="no_contest">No Contest</button>
+        <button type="submit" name="points" value="points">Points</button>
+        <button type="submit" name="finish" value="finish">Finish</button>
+    </form>
+    <form action="/reset" method="get">
+        <button type="submit">Reset</button>
+    </form>
+</body>
+</html>
