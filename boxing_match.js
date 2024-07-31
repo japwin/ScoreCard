@@ -35,35 +35,31 @@ function submitRound(roundNumber) {
     let RoundF1 = parseInt(document.getElementById(`Round${roundNumber}F1`).value);
     let RoundF2 = parseInt(document.getElementById(`Round${roundNumber}F2`).value);
 
-    // Validate scores
     if (isNaN(RoundF1) || isNaN(RoundF2) || RoundF1 < 7 || RoundF1 > 10 || RoundF2 < 7 || RoundF2 > 10) {
         alert('Scores must be between 7 and 10.');
         return;
     }
 
-    // Store scores
     SCard1.push(RoundF1);
     SCard2.push(RoundF2);
     
-    // Calculate totals
     let overall1 = SCard1.reduce((a, b) => a + b, 0);
     let overall2 = SCard2.reduce((a, b) => a + b, 0);
     
-    // Show scores
     alert(`${fighter1} Scores: ${SCard1.join(", ")} Total: ${overall1}`);
     alert(`${fighter2} Scores: ${SCard2.join(", ")} Total: ${overall2}`);
     
-    // Decide whether to continue
-    if (roundNumber < 15) {
-        let continueMatch = confirm('Continue to next round?');
-        if (continueMatch) {
+    let continueMatch = confirm('Continue to next round?');
+    
+    if (continueMatch) {
+        if (roundNumber < 15) {
             handleRound(roundNumber + 1);
         } else {
-            Results();
+            alert('Fight goes to Scorecards');
+            ScoreCards();
         }
     } else {
-        alert('Fight goes to Scorecards');
-        ScoreCards();
+        Results();
     }
 }
 

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter Username</title>
+    <title>Boxing Scorecard</title>
+    <script src="scorecard.js"></script>
 </head>
 <body>
-    <h1>Enter Username</h1>
-    <form action="/" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-        <button type="submit">Next</button>
-    </form>
+    <h1>Boxing Scorecard</h1>
+    <label>Fighter 1: <input type="text" id="fighter1"></label><br>
+    <label>Fighter 2: <input type="text" id="fighter2"></label><br>
+    <button onclick="submitFighters()">Submit Fighters</button>
+
+    <div id="rounds"></div>
 </body>
 </html>
